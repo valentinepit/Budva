@@ -1,0 +1,13 @@
+{% extends 'points/base.html' %}
+{% load static %}
+{% block content %}
+<ul>
+    <li>{{object.title}}</li>
+    <li>{{object.distance}}</li>
+    <ul>
+    {% for point in points %}
+    <li>{{point.name}}</li>
+    {% endfor %}
+        </ul>
+</ul>
+{% endblock content %}

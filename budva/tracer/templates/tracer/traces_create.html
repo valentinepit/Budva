@@ -1,0 +1,17 @@
+{% extends 'points/base.html' %}
+{% load static %}
+{% block content %}
+    <h1>New Trace</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+                <label>Title</label><br>
+                <input type="text" name="title"/>
+            </p>
+            {% for point in points %}
+            <label> {{ point.title }}</label><br>
+            <input type="checkbox" name="points" value = "{{ point.id }}">
+            {% endfor %}
+            <input type="submit" value="Сохранить">
+        </form>
+{% endblock content %}

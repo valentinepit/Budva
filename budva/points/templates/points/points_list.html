@@ -1,0 +1,12 @@
+{% extends 'points/base.html' %}
+{% load static %}
+{% block content %}
+<ul>
+    {% for point in points %}
+    <li>
+        <a href="{% url 'points:point_detail'  point.pk %}">{{point.name}}</a>
+           <p>X-{{point.abscissa}}--Y-{{ point.ordinata }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}}
