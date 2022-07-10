@@ -1,6 +1,7 @@
 {% extends 'points/base.html' %}
 {% block content %}
 <h1>Traces</h1>
+            <a href="{% url 'traces:traces_create' %}">Add Trace</a>
 <ul>
     {% for trace in object_list %}
     <li><a href="{% url 'traces:trace_detail' trace.pk %}">{{trace.title}}</a>
@@ -8,7 +9,7 @@
         <br>
         <a href="{% url 'traces:trace_edit' trace.pk %}">Edit Trace</a>
         <a href="{% url 'traces:trace_delete' trace.pk %}">Delete Trace</a>
-
     </li>
     {% endfor %}
+
 {% endblock content %}

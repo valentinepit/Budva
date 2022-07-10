@@ -11,4 +11,4 @@ class TraceCreateForm(ModelForm):
 
     class Meta:
         model = Traces
-        fields = ['title', 'points']
+        fields = ['title', 'points', 'user']

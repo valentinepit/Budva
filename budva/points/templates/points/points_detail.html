@@ -6,4 +6,5 @@
     <p> Y - {{ point.ordinata }}</p>
     <a href="{% url 'points:point_edit' point.pk %}">+ Edit Point</a>
     <p><a href="{% url 'points:point_delete' point.pk %}">+ Delete Point</a></p>
+    <p><a href="{% url 'points:point_create' %}">+ Add Point</a></p>
 {% endblock content%}

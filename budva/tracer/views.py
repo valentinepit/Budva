@@ -1,6 +1,5 @@
 from math import sqrt
 
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -24,10 +23,11 @@ class TracesListView(LoginRequiredMixin, ListView):
     redirect_field_name = 'redirect_to'
 
 
-class TracesCreateView(CreateView):
+class TracesCreateView(LoginRequiredMixin, CreateView):
     model = Traces
     form_class = TraceCreateForm
-    distance = 0
+    login_url = 'users:login'
+    redirect_field_name = 'redirect_to'
 
     def get_form_kwargs(self):
         kwargs = super(TracesCreateView, self).get_form_kwargs()
@@ -58,10 +58,12 @@ class TracesCreateView(CreateView):
         return dst
 
 
-class TraceDetailView(DetailView):
+class TraceDetailView(LoginRequiredMixin, DetailView):
     model = Traces
     template_name = 'tracer/trace_detail.html'
     fields = '__all__'
+    login_url = 'users:login'
+    redirect_field_name = 'redirect_to'
 
     def get_context_data(self, **kwargs):
         context = super(TraceDetailView, self).get_context_data(**kwargs)
@@ -72,13 +74,17 @@ class TraceDetailView(DetailView):
         return context
 
 
-class TraceDeleteView(DeleteView):
+class TraceDeleteView(LoginRequiredMixin, DeleteView):
     model = Traces
     template_name = 'tracer/trace_delete.html'
     success_url = reverse_lazy('traces:traces_list')
+    login_url = 'users:login'
+    redirect_field_name = 'redirect_to'
 
 
-class TraceUpdateView(UpdateView):
+class TraceUpdateView(LoginRequiredMixin, UpdateView):
     model = Traces
     template_name = 'tracer/trace_update.html'
     fields = '__all__'
+    login_url = 'users:login'
+    redirect_field_name = 'redirect_to'

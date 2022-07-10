@@ -9,8 +9,9 @@
             {% for point in trace.points.all %}
                 <li>{{ point.name }}</li>
             {% endfor %}
-            Distance -- {{trace.distance}}
+
         {% endfor %}
     </ul>
+            Distance -- {{distance_sum}}
 <a href="{% url 'traces:traces_create' %}">Добавить новый маршрут</a>
 {% endblock content %}
