@@ -12,3 +12,6 @@ class Points(models.Model):
 
     def get_absolute_url(self):
         return reverse('points:point_detail', args=[str(self.id)])
+
+    class Meta:
+        ordering = ['abscissa']
