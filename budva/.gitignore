@@ -1,0 +1,8 @@
+../.idea/
+.data/
+*.py[co]
+static/
+docker-compose.override.yml
+.env
+
+

@@ -5,4 +5,4 @@ from budva.points.models import Points
 
 
 class User(AbstractUser):
-    traces = models.ManyToManyField(Points, verbose_name='users_traces')
+    traces = models.ManyToManyField(Points, verbose_name="users_traces")

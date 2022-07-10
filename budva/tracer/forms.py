@@ -6,9 +6,10 @@ from points.models import Points
 
 
 class TraceCreateForm(ModelForm):
-    points = forms.ModelMultipleChoiceField(queryset=Points.objects.all(), widget=forms.CheckboxSelectMultiple,
-                                            required=True)
+    points = forms.ModelMultipleChoiceField(
+        queryset=Points.objects.all(), widget=forms.CheckboxSelectMultiple, required=True
+    )
 
     class Meta:
         model = Traces
-        fields = ['title', 'points', 'user']
+        fields = ["title", "points", "user"]

@@ -7,4 +7,4 @@ class User(AbstractUser):
     password = models.CharField(max_length=40)
 
     def get_absolute_url(self):
-        return reverse('users:users_list')
+        return reverse("users:users_list")

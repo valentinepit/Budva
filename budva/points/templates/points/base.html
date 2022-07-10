@@ -9,6 +9,8 @@
 <body>
 <div>
     <br>
+    <div style="display:flex"></div>
+    <li><a href="{% url 'traces:index' %}"> Main</a></li>
     {% if user.is_authenticated %}
     <li><a href="{% url 'traces:index' %}"><i class="ion-person"></i>
         <div>{{ user.username|default:'Пользователь' }}</div>
@@ -26,6 +28,7 @@
         <div>Login</div>
     </a></li>
     {% endif %}
+       </div>
 </div>
 {% block content %}
 {% endblock %}
