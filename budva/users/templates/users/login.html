@@ -1,0 +1,18 @@
+{% extends 'points/base.html' %}
+{% load static %}
+
+{% block content %}
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    {{ login_form.as_p }}
+    {% if next_param %}
+    <input type="hidden" name="next" value="{{ next_param }}">
+    {% endif %}
+    <button type="submit">Войти</button>
+    <div>
+        <span>У вас нет аккаунта?</span>
+        <a href="{% url 'users:users_create' %}">Регистрация</a>
+    </div>
+
+</form>
+{% endblock content%}

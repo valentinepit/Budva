@@ -7,6 +7,26 @@
     <title>Title</title>
 </head>
 <body>
+<div>
+    <br>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'traces:index' %}"><i class="ion-person"></i>
+        <div>{{ user.username|default:'Пользователь' }}</div>
+        </a></li>
+    <li><a href="{% url 'users:logout' %}"><i class="ion-person"></i>
+        <div>Logout</div>
+    </a></li>
+    {% else %}
+    <li><a href="{% url 'users:users_create' %}"><i
+            class="ion-person-add"></i>
+        <div>Register</div>
+    </a></li>
+    <li><a href="{% url 'users:login' %}?next={{ request.path }}"><i
+            class="ion-person"></i>
+        <div>Login</div>
+    </a></li>
+    {% endif %}
+</div>
 {% block content %}
 {% endblock %}
 </body>

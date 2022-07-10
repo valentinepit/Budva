@@ -1,6 +1,9 @@
 from math import sqrt
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from points.models import Points
@@ -9,9 +12,16 @@ from .forms import TraceCreateForm
 from .models import Traces
 
 
-class TracesListView(ListView):
+def index(request):
+    context = {}
+    return render(request, 'tracer/index.html', context)
+
+
+class TracesListView(LoginRequiredMixin, ListView):
     model = Traces
     template_name = 'tracer/traces_list.html'
+    login_url = 'users:login'
+    redirect_field_name = 'redirect_to'
 
 
 class TracesCreateView(CreateView):
@@ -43,8 +53,8 @@ class TracesCreateView(CreateView):
 
     def get_distance(self, pts):
         dst = 0
-        for i in range(len(pts)-1):
-            dst += sqrt((pts[i+1].abscissa - pts[i].abscissa) ** 2 + (pts[i+1].abscissa - pts[i].abscissa) ** 2)
+        for i in range(len(pts) - 1):
+            dst += sqrt((pts[i + 1].abscissa - pts[i].abscissa) ** 2 + (pts[i + 1].abscissa - pts[i].abscissa) ** 2)
         return dst
 
 

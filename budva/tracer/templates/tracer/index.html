@@ -1,0 +1,14 @@
+{% extends 'points/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<ul>
+    <li>
+<a href="{% url 'traces:traces_list' %}">Traces</a>
+    </li>    <li>
+<a href="{% url 'points:point_list' %}">Points</a>
+    </li>    <li>
+<a href="{% url 'users:users_list' %}">Users</a>
+    </li>
+</ul>
+{% endblock content %}
